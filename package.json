@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongoose": "^8.16.0",
+    "node-cron": "^4.1.1",
+    "nodemailer": "^7.0.3",
+    "qrcode-terminal": "^0.12.0",
+    "twilio": "^5.7.1",
+    "whatsapp-web.js": "^1.30.0"
+  },
+  "name": "car-wash",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": ""
+}

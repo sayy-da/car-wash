@@ -1,0 +1,842 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" />
+
+  <style>
+    /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        } */
+
+    .hero-container {
+
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section {
+      padding: 100px;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      border-radius: 0.5rem;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 1rem 1rem 2rem 1rem;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: all 0.8s ease-in-out;
+      animation: zoomEffect 4s infinite;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+      border-radius: 0.5rem;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 64rem;
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+
+    .main-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.033em;
+      transition: all 0.8s ease-in-out;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .subtitle {
+      color: white;
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0.9;
+      transition: all 0.8s ease-in-out;
+    }
+
+    .cta-button {
+      display: flex;
+      min-width: 120px;
+      max-width: 300px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      height: 3rem;
+      padding: 0 1.5rem;
+      background-color: #ff6b35;
+      color: white;
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 0.015em;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: none;
+    }
+
+    .cta-button:hover {
+      background-color: #e55a2b;
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Text Style Variations */
+    .style-1 .main-title {
+      color: #ffffff;
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      text-transform: capitalize;
+      border-left: 4px solid #ff6b35;
+      padding-left: 1rem;
+    }
+
+    .style-2 .main-title {
+      color: #ffffff;
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      text-transform: capitalize;
+      border-left: 4px solid #ff6b35;
+      padding-left: 1rem;
+    }
+
+    .style-1 .subtitle {
+      color: #e0e0e0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .style-2 .subtitle {
+      color: #e0e0e0;
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    /* Zoom Animation */
+    @keyframes zoomEffect {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Responsive Design */
+    @media (min-width: 640px) {
+      .hero-section {
+        min-height: 480px;
+        gap: 1.5rem;
+        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+      }
+
+      .main-title {
+        font-size: 1.875rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .cta-button {
+        height: 3.5rem;
+        padding: 0 2rem;
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .main-title {
+        font-size: 2.25rem;
+      }
+
+      .subtitle {
+        font-size: 1.125rem;
+      }
+
+      .hero-section {
+        padding: 2.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-section {
+        min-height: 600px;
+        padding: 2.5rem;
+      }
+
+      .main-title {
+        font-size: 3rem;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .main-title {
+        font-size: 3.75rem;
+      }
+    }
+
+    @media (min-width: 1536px) {
+      .main-title {
+        font-size: 4rem;
+      }
+    }
+
+    .who-we-are-section {
+      border-radius: 2rem;
+      margin: 1rem;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg, #e4e4c7 0%, #e2e8f0 100%);
+      position: relative;
+    }
+
+    .who-we-are-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23000" opacity="0.02"/><circle cx="80" cy="40" r="1" fill="%23000" opacity="0.02"/><circle cx="40" cy="80" r="1" fill="%23000" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .left-content {
+      text-align: left;
+    }
+
+    .small-text {
+      font-size: 0.875rem;
+      color: #64748b;
+      text-transform: lowercase;
+      font-weight: 500;
+      margin-top: 1rem;
+      /* margin-bottom: 0.5rem; */
+      letter-spacing: 1px;
+    }
+
+    .main-heading {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #1e293b;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #1e293b, #475569);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      font-size: 1.125rem;
+      color: #ff6b35;
+      font-weight: 600;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .right-content {
+      text-align: left;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      text-align: justify;
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      background: linear-gradient(135deg, #ff6b35, #e55a2b);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .contact-button:hover::before {
+      left: 100%;
+    }
+
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+    }
+
+    .contact-button:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive Design for Who We Are Section */
+    @media (min-width: 768px) {
+      .who-we-are-section {
+        padding: 5rem 2rem;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr 1.2fr;
+        gap: 4rem;
+      }
+
+      .main-heading {
+        font-size: 2.25rem;
+      }
+
+      .description {
+        font-size: 1.125rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .who-we-are-section {
+        padding: 6rem 3rem;
+      }
+
+      .content-grid {
+        gap: 5rem;
+      }
+
+      .main-heading {
+        font-size: 2rem;
+      }
+
+      .tagline {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* .images-section {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            position: relative;
+        } */
+
+    .images-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .image-card {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .image-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .image-card:hover .image-wrapper img {
+      transform: scale(1.1);
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 2rem 1.5rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .image-card:hover .image-overlay {
+      transform: translateY(0);
+    }
+
+    .image-overlay h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ff6b35;
+    }
+
+    .image-overlay p {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.4;
+    }
+
+    .button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px; /* optional spacing */
+}
+
+
+ 
+
+    /* Responsive Design for Images Section */
+    @media (min-width: 640px) {
+      .images-section {
+        padding: 5rem 2rem;
+      }
+
+      .images-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+      }
+
+      .image-wrapper {
+        height: 280px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .images-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+      }
+
+      .image-wrapper {
+        height: 300px;
+      }
+
+      .image-overlay h3 {
+        font-size: 1.375rem;
+      }
+
+      .image-overlay p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .images-section {
+        padding: 2rem 1rem;
+      }
+
+      .image-wrapper {
+        height: 320px;
+      }
+    }
+  </style>
+
+  <title>Best Water Service Center</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body>
+
+  <div class="relative flex size-full min-h-screen flex-col bg-[#31160c] justify-between overflow-x-hidden"
+    style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+    <!-- Hero Section -->
+    <div>
+
+
+      <div class="hero-container">
+        <div class="hero-section" id="heroSection">
+          <div class="content">
+            <div class="text-container">
+              <h1 class="main-title" id="mainTitle">Best Water Service Center</h1>
+              <h2 class="subtitle" id="subtitle">Polishing, Washing, Vacuum Cleaning</h2>
+            </div>
+            <a href="https://wa.me/919846106674?text=Hi" target="_blank">
+              <button class="cta-button">
+                <span>Book Now</span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const heroSection = document.getElementById('heroSection');
+        const mainTitle = document.getElementById('mainTitle');
+        const subtitle = document.getElementById('subtitle');
+
+        const slides = [
+          {
+            image: 'https://images.unsplash.com/photo-1575844611398-2a68400b437c?fm=jpg&q=60&w=3000',
+            title: 'Best Water Service Center',
+            subtitle: 'Polishing, Washing, Vacuum Cleaning',
+            style: 'style-1'
+          },
+          {
+            image: 'https://39678065.fs1.hubspotusercontent-na1.net/hub/39678065/hubfs/Washing%20cars.jpg?width=1920&height=845&name=Washing%20cars.jpg',
+            title: 'Premium Car Care Services',
+            subtitle: 'Professional cleaning & detailing solutions',
+            style: 'style-2'
+          }
+        ];
+
+        let currentSlide = 0;
+
+        function updateSlide() {
+          const slide = slides[currentSlide];
+
+          // Update background image
+          heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%), url("${slide.image}")`;
+
+          // Remove all style classes
+          heroSection.classList.remove('style-1', 'style-2');
+
+          // Add new style class
+          heroSection.classList.add(slide.style);
+
+          // Update text content
+          mainTitle.textContent = slide.title;
+          subtitle.textContent = slide.subtitle;
+
+          // Move to next slide
+          currentSlide = (currentSlide + 1) % slides.length;
+        }
+
+        // Initialize first slide
+        updateSlide();
+
+        // Change slides every 4 seconds (2 seconds zoom + 2 seconds display)
+        setInterval(updateSlide, 4000);
+      </script>
+
+      <section class="who-we-are-section">
+        <div class="container">
+          <div class="content-grid">
+            <!-- Left Side -->
+            <div class="left-content">
+              <p class="small-text">who we are</p>
+              <h2 class="main-heading">Specialized in Car Wash & Interior detailing</h2>
+            </div>
+
+            <!-- Right Side -->
+            <div class="right-content">
+              <p class="description">
+
+                At EasyShine CarWash, we blend expert car care with effortless convenience through our seamless
+                pick-and-drop service. Simply hand over your keys, and return to a car that shines like new. </p>
+              <a href="https://wa.me/919846106674?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services"
+                target="_blank">
+                <button class="contact-button">
+                  <span>Contact Us</span>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- Services Section -->
+      <div class="flex flex-col gap-8 sm:gap-10 px-4 py-8 sm:px-6 lg:px-6 sm:py-8 lg:py-16">
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-4">
+            <h1
+              class="text-white text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-[-0.033em] max-w-4xl">
+              Our Services
+            </h1>
+            <p class="text-white text-sm sm:text-base lg:text-lg font-normal leading-normal max-w-3xl opacity-90">
+              We provide premium car care services with professional quality and attention to detail.
+            </p>
+          </div>
+          <section class="images-section">
+            <div class="container">
+              <div class="images-grid">
+                <div class="image-card">
+                  <div class="image-wrapper">
+                    <img
+                      src="https://static.vecteezy.com/system/resources/previews/035/034/136/non_2x/close-up-hand-interior-car-cleaning-free-photo.jpg"
+                      alt="Interior Car Cleaning" loading="lazy">
+                    <div class="image-overlay">
+                      <h3>Interior Cleaning</h3>
+                      <p>Professional interior detailing and deep cleaning</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="image-card">
+                  <div class="image-wrapper">
+                    <img
+                      src="https://cdn.asp.events/CLIENT_Comexpos_0322E963_F4B5_73A7_0954F2A7F5928375/sites/FE-Hub-2023/media/libraries/blog/carwash.jpg/fit-in/1440x9999/filters:no_upscale()"
+                      alt="Car Wash Service" loading="lazy">
+                    <div class="image-overlay">
+                      <h3>Car Wash Service</h3>
+                      <p>Complete exterior washing and cleaning solutions</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="image-card">
+                  <div class="image-wrapper">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7FinFeLIuElLycDmKGSp4hqxJV9VY6rMrWGiPWTNbZE09eANV45cpTwfM-mNOjEcpDSs&usqp=CAU"
+                      alt="Premium Detailing" loading="lazy">
+                    <div class="image-overlay">
+                      <h3>Premium Detailing</h3>
+                      <p>High-end polishing and premium car care services</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- <button
+              class="flex min-w-[120px] max-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 sm:h-12 px-4 sm:px-6 bg-[#ff6b35] hover:bg-[#e55a2b] transition-colors text-white text-sm sm:text-base font-bold leading-normal tracking-[0.015em] w-fit"
+            >
+              <span class="truncate">Learn More</span>
+            </button> -->
+        </div>
+
+        <section class="who-we-are-section">
+          <div class="container">
+            <div class="content-grid">
+              <!-- Left Side -->
+              <div class="left-content">
+                <p class="small-text">why choose us</p>
+                <h2 class="main-heading">Give your car the shine it deserves — the EasyShine way!</h2>
+              </div>
+
+              <!-- Right Side -->
+              <div class="right-content">
+  <p class="description">
+    We do more than just wash your car — we care for it. Our expert team uses high-quality products,
+    modern equipment, and a gentle touch to make your vehicle sparkle like new.
+  </p>
+  <a href="https://wa.me/919846106674?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services" target="_blank">
+    <button class="contact-button">
+      <span>Contact Us</span>
+    </button>
+  </a>
+</div>
+
+            </div>
+          </div>
+        </section>
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div
+            class="flex flex-col gap-4 rounded-xl border border-[#7e3920] bg-[#451f11] p-4 sm:p-6 hover:bg-[#5a2515] transition-colors">
+            <div class="text-white w-8 h-8 sm:w-10 sm:h-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M152,112a8,8,0,0,1-8,8H120v24a8,8,0,0,1-16,0V120H80a8,8,0,0,1,0-16h24V80a8,8,0,0,1,16,0v24h24A8,8,0,0,1,152,112Zm77.66,117.66a8,8,0,0,1-11.32,0l-50.06-50.07a88.11,88.11,0,1,1,11.31-11.31l50.07,50.06A8,8,0,0,1,229.66,229.66ZM112,184a72,72,0,1,0-72-72A72.08,72.08,0,0,0,112,184Z">
+                </path>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h2 class="text-white text-lg sm:text-xl font-bold leading-tight">Polishing</h2>
+              <p class="text-[#de977c] text-sm sm:text-base font-normal leading-normal">
+                High-quality car polishing services to restore your vehicle's shine and protect the paint.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col gap-4 rounded-xl border border-[#7e3920] bg-[#451f11] p-4 sm:p-6 hover:bg-[#5a2515] transition-colors">
+            <div class="text-white w-8 h-8 sm:w-10 sm:h-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-11.55,39.29c-4.79,5-9.75,10.17-12.38,16.52-2.52,6.1-2.63,13.07-2.73,19.82-.1,7-.21,14.33-3.32,17.43s-10.39,3.22-17.43,3.32c-6.75.1-13.72.21-19.82,2.73-6.35,2.63-11.52,7.59-16.52,12.38S132,224,128,224s-9.15-4.92-14.11-9.69-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82-2.63-6.35-7.59-11.52-12.38-16.52S32,132,32,128s4.92-9.15,9.69-14.11,9.75-10.17,12.38-16.52c2.52-6.1,2.63-13.07,2.73-19.82.1-7,.21-14.33,3.32-17.43S70.51,56.9,77.55,56.8c6.75-.1,13.72-.21,19.82-2.73,6.35-2.63,11.52-7.59,16.52-12.38S124,32,128,32s9.15,4.92,14.11,9.69,10.17,9.75,16.52,12.38c6.1,2.52,13.07,2.63,19.82,2.73,7,.1,14.33.21,17.43,3.32s3.22,10.39,3.32,17.43c.1,6.75.21,13.72,2.73,19.82,2.63,6.35,7.59,11.52,12.38,16.52S224,124,224,128,219.08,137.15,214.31,142.11ZM120,136V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z">
+                </path>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h2 class="text-white text-lg sm:text-xl font-bold leading-tight">Washing</h2>
+              <p class="text-[#de977c] text-sm sm:text-base font-normal leading-normal">
+                Efficient and thorough car washing with premium products and eco-friendly methods.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col gap-4 rounded-xl border border-[#7e3920] bg-[#451f11] p-4 sm:p-6 hover:bg-[#5a2515] transition-colors sm:col-span-2 lg:col-span-1">
+            <div class="text-white w-8 h-8 sm:w-10 sm:h-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M246,98.73l-56-64A8,8,0,0,0,184,32H72a8,8,0,0,0-6,2.73l-56,64a8,8,0,0,0,.17,10.73l112,120a8,8,0,0,0,11.7,0l112-120A8,8,0,0,0,246,98.73ZM222.37,96H180L144,48h36.37ZM74.58,112l30.13,75.33L34.41,112Zm89.6,0L128,202.46,91.82,112ZM96,96l32-42.67L160,96Zm85.42,16h40.17l-70.3,75.33ZM75.63,48H112L76,96H33.63Z">
+                </path>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h2 class="text-white text-lg sm:text-xl font-bold leading-tight">Vacuum Cleaning</h2>
+              <p class="text-[#de977c] text-sm sm:text-base font-normal leading-normal">
+                Comprehensive interior vacuum cleaning to remove dirt, debris, and allergens.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking Section -->
+      <div class="w-full">
+        <div class="flex flex-col justify-end gap-6 sm:gap-8 px-4 py-8 sm:px-6 lg:px-8 sm:py-16 lg:py-20">
+          <div class="flex flex-col gap-4 text-center">
+            <h1
+              class="text-white text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-[-0.033em] max-w-4xl mx-auto">
+              Book Your Service Now!
+            </h1>
+            <p class="text-white text-sm sm:text-base opacity-90 max-w-2xl mx-auto">
+              Get in touch with us to schedule your car service appointment.
+            </p>
+          </div>
+         
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="flex flex-col gap-6 sm:gap-8 px-4 py-8 sm:px-6 lg:px-8 sm:py-10 text-center">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12">
+          <a class="text-[#de977c] text-sm sm:text-base font-normal leading-normal hover:text-white transition-colors"
+            href="#">
+            Privacy Policy
+          </a>
+          <a class="text-[#de977c] text-sm sm:text-base font-normal leading-normal hover:text-white transition-colors"
+            href="#">
+            Terms of Service
+          </a>
+          <a class="text-[#de977c] text-sm sm:text-base font-normal leading-normal hover:text-white transition-colors"
+            href="#">
+            Contact Us
+          </a>
+        </div>
+
+        <div class="flex justify-center gap-6">
+          <a href="#" class="text-[#de977c] hover:text-white transition-colors">
+            <div class="w-6 h-6 sm:w-7 sm:h-7">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M240,149.31c0,16.11-3.17,29.89-9.17,39.84-7.43,12.33-19,18.85-33.39,18.85-27.94,0-47.78-37-68.78-76.22C111.64,100,92.35,64,74,64c-9.38,0-19.94,10-28.25,26.67A138.18,138.18,0,0,0,32,149.31c0,13.2,2.38,24.12,6.88,31.58S49.82,192,58.56,192c15.12,0,30.85-24.54,44.23-48.55a8,8,0,0,1,14,7.8C101.46,178.71,83.07,208,58.56,208c-14.41,0-26-6.52-33.39-18.85-6-10-9.17-23.73-9.17-39.84A154.81,154.81,0,0,1,31.42,83.54C42.82,60.62,57.94,48,74,48c27.94,0,47.77,37,68.78,76.22C159.79,156,179.08,192,197.44,192c8.74,0,15.18-3.63,19.68-11.11S224,162.51,224,149.31a138.18,138.18,0,0,0-13.74-58.64C202,74,191.39,64,182,64c-8.36,0-17.68,7.48-28.51,22.88a8,8,0,1,1-13.08-9.21c9-12.74,23-29.67,41.59-29.67,16.05,0,31.17,12.62,42.57,35.54A154.81,154.81,0,0,1,240,149.31Z">
+                </path>
+              </svg>
+            </div>
+          </a>
+          <a href="#" class="text-[#de977c] hover:text-white transition-colors">
+            <div class="w-6 h-6 sm:w-7 sm:h-7">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z">
+                </path>
+              </svg>
+            </div>
+          </a>
+          <a href="#" class="text-[#de977c] hover:text-white transition-colors">
+            <div class="w-6 h-6 sm:w-7 sm:h-7">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z">
+                </path>
+              </svg>
+            </div>
+          </a>
+        </div>
+
+        <p class="text-[#de977c] text-sm sm:text-base font-normal leading-normal">
+          © 2025 Best Water Service Center. All rights reserved.
+        </p>
+      </footer>
+    </div>
+
+    <div class="h-2 sm:h-5 bg-[#31160c]"></div>
+  </div>
+</body>
+
+</html>

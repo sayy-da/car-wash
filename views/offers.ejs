@@ -1,0 +1,260 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+    
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      let sidebarOpen = false;
+      
+      function toggleSidebar() {
+        sidebarOpen = !sidebarOpen;
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        
+        if (sidebarOpen) {
+          sidebar.classList.remove('-translate-x-full');
+          overlay.classList.remove('hidden');
+        } else {
+          sidebar.classList.add('-translate-x-full');
+          overlay.classList.add('hidden');
+        }
+      }
+      
+      function closeSidebar() {
+        sidebarOpen = false;
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    </script>
+  </head>
+  <body>
+    <div class="relative flex min-h-screen bg-gray-50" style='font-family: Inter, "Noto Sans", sans-serif;'>
+      
+      <!-- Mobile Overlay -->
+      <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden hidden" onclick="closeSidebar()"></div>
+      
+      <!-- Sidebar -->
+      <div id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0">
+        <div class="flex items-center justify-between h-16 px-6 border-b border-gray-200">
+          <h1 class="text-lg font-bold text-gray-900">Dashboard</h1>
+          <button onclick="closeSidebar()" class="lg:hidden p-2 rounded-md hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <nav class="mt-6 px-3">
+          <a href="/admin/customers"  class="flex items-center gap-3 px-3 py-3 mb-1 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+            </svg>
+            Customers
+          </a>
+          
+          <a href="/admin/offers"  class="flex items-center gap-3 px-3 py-3 mb-1 text-sm font-medium text-white bg-blue-600 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M216,64H176a48,48,0,0,0-96,0H40A16,16,0,0,0,24,80V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32ZM40,80H80V96a8,8,0,0,0,16,0V80h64V96a8,8,0,0,0,16,0V80h40V200H40Z"></path>
+            </svg>
+            Offers
+          </a>
+          
+          <a href="#" class="flex items-center gap-3 px-3 py-3 mb-1 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.6,107.6,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3.06-3.05L221.27,40.5a8,8,0,0,0-3.94-6,107.29,107.29,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L165.38,40Q128,40,128,40t-37.38,0L71.94,25.11a8,8,0,0,0-7.06-1.49A107.6,107.6,0,0,0,38.63,34.51a8,8,0,0,0-3.94,6L32.06,64.24Q30.58,65.68,29,67.24L5.27,69.88a8,8,0,0,0-6,3.93A107.71,107.71,0,0,0-11.6,99.94a8,8,0,0,0,1.49,7.06L25,125.68q0,2.16,0,4.32L25,148.68a8,8,0,0,0-1.48,7.06,107.6,107.6,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.48,1.56,3.06,3.05L34.73,215.5a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L90.62,216q18.7.06,37.38,0l18.68,14.89a8,8,0,0,0,7.06,1.49A107.21,107.21,0,0,0,180,221.49a8,8,0,0,0,3.94-6l2.64-23.76q1.56-1.48,3.05-3.06l23.76-2.64a8,8,0,0,0,6-3.93,107.28,107.28,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8.06,8.06,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L83,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.55,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.32,100.45a91.57,91.57,0,0,1,6.23-15L69.13,83a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,83,69.13l2.51-22.58a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8.06,8.06,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.9,123.66Z"></path>
+            </svg>
+            Settings
+          </a>
+        </nav>
+      </div>
+      
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col min-w-0 lg:ml-0">
+        
+        <!-- Top Header -->
+        <div class="flex items-center justify-between bg-white shadow-sm px-4 lg:px-6 py-4">
+          <div class="flex items-center gap-3">
+            <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-md hover:bg-gray-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+              </svg>
+            </button>
+            <h2 class="text-lg lg:text-xl font-bold text-gray-900">Offers</h2>
+          </div>
+          
+          <button onclick="openOfferModal('Add')" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Content Area -->
+        <div class="flex-1 flex flex-col bg-white">
+          
+          <!-- Customer List -->
+         <div class="flex-1 p-4 lg:p-6">
+  <!-- Example Offer Card -->
+  <% offers.forEach(offer => { %>
+    <div class="mb-4 last:mb-0">
+      <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 sm:p-6 transition-shadow hover:shadow-md">
+        <div class="flex flex-col space-y-4 lg:flex-row lg:items-start lg:justify-between lg:space-y-0">
+          <!-- Offer Content -->
+          <div class="flex-1 min-w-0">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2 break-words">
+              <%= offer.name %>
+            </h3>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4 mb-3">
+              <p class="text-sm text-gray-600 whitespace-nowrap">
+                From: <%= formatDate(offer.from) %>
+              </p>
+              <span class="hidden sm:block text-gray-400">|</span>
+              <p class="text-sm text-gray-600 whitespace-nowrap">
+                Upto: <%= formatDate(offer.upto) %>
+              </p>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed break-words">
+              <%= offer.description %>
+            </p>
+          </div>
+          
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-2 lg:ml-6 lg:flex-shrink-0 ">
+            <button 
+              type="button"
+              onclick="openOfferModal('Edit', {
+                id: '<%= offer._id %>',
+                name: '<%= offer.name %>',
+                from: '<%= offer.from %>',
+                upto: '<%= offer.upto %>',
+                description: '<%= offer.description %>'
+              })"
+              class="w-full sm:w-auto px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300"
+            >
+              Edit
+            </button>
+            <form action="/admin/delete-offer" method="post" class="m-0 p-0 border-0 bg-transparent" onsubmit="return confirm('Are you sure you want to delete this offer?')">
+              <input type="hidden" name="id" value="<%= offer._id %>">
+              <button 
+                type="submit" 
+                class="w-full px-4 sm:w-auto py-2 bg-red-50 text-red-600 rounded-md text-sm font-medium hover:bg-red-100 transition-colors focus:outline-none focus:ring-2 focus:ring-red-300"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+       
+          <div class="p-4 lg:p-6 border-t border-gray-200 bg-gray-50">
+            <button onclick="openOfferModal('Add')" class="w-full lg:w-auto lg:ml-auto flex items-center justify-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+              </svg>
+              Add Offer
+            </button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Offer Modal -->
+<div id="offerModal" class="fixed inset-0 z-50 bg-black bg-opacity-50 hidden flex items-center justify-center px-4">
+  <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative">
+    <h3 id="modalTitle" class="text-lg font-bold mb-4">Add Offer</h3>
+    <form id="offerForm" method="post" class="space-y-4">
+      <input type="hidden" name="id" id="offerId">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Offer Name</label>
+        <input type="text" id="offerName" name="name" class="w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500" required>
+      </div>
+   
+        <div >
+          <label class="block text-sm font-medium text-gray-700">From</label>
+          <input type="date" id="offerFrom" name="from" class="w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500" required>
+        </div>
+        <div >
+          <label class="block text-sm font-medium text-gray-700">Upto</label>
+          <input type="date" id="offerUpto" name="upto" class="w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500" required>
+        </div>
+     
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Description</label>
+        <textarea id="offerDescription" name="description" rows="3" class="w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500" required></textarea>
+      </div>
+      <div class="flex justify-end gap-2 pt-4">
+        <button type="button" onclick="closeOfferModal()" class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700">Save</button>
+      </div>
+    </form>
+    <button onclick="closeOfferModal()" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
+      ✕
+    </button>
+  </div>
+</div>
+
+<script>
+  function formatForDateInput(rawDate) {
+    const date = new Date(rawDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  function openOfferModal(mode = 'Add', data = {}) {
+  document.getElementById('modalTitle').textContent = mode + ' Offer';
+
+  document.getElementById('offerId').value = data.id || '';
+  document.getElementById('offerName').value = data.name || '';
+  document.getElementById('offerFrom').value = data.from ? formatForDateInput(data.from) : '';
+  document.getElementById('offerUpto').value = data.upto ? formatForDateInput(data.upto) : '';
+  document.getElementById('offerDescription').value = data.description || '';
+
+  // ✅ Get the form by ID
+  const form = document.getElementById('offerForm');
+  if (form) {
+    form.action = mode === 'Edit' ? '/admin/update-offer' : '/admin/add-offer';
+  }
+
+  document.getElementById('offerModal').classList.remove('hidden');
+}
+
+
+  function closeOfferModal() {
+    document.getElementById('offerModal').classList.add('hidden');
+  }
+  
+
+  // // Handle form submission
+  // document.getElementById('offerForm').addEventListener('submit', function(e) {
+  //   e.preventDefault();
+  //   const name = document.getElementById('offerName').value;
+  //   const from = document.getElementById('offerFrom').value;
+  //   const upto = document.getElementById('offerUpto').value;
+  //   const description = document.getElementById('offerDescription').value;
+
+  //   // TODO: You can handle saving here (API call or DOM update)
+  //   console.log({ name, from, upto, description });
+
+  //   closeOfferModal(); // Close after save
+  // });
+</script>
+
+  </body>  
+</html>
