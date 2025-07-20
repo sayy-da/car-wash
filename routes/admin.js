@@ -4,8 +4,8 @@ const Offer = require('../models/Offer');
 const router = express.Router();
 const isAuthenticated = require('../Middleware/adminMiddleware')
 const admin = {
-  username: 'safa',
-  password: 'safa123'
+  username: 'shibil',
+  password: 'shibil123'
 };
 
 router.use((req, res, next) => {
