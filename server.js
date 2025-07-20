@@ -46,7 +46,7 @@ app.use('/admin', adminRoutes);
 // CRON Job: Runs every minute (adjust to `0 10 * * *` for 10 AM daily)
 cron.schedule('0 10 * * *', async () => {
   const oneMonthAgo = new Date();
-  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+  oneMonthAgo.setMonth(oneMonthAgo.getMonth()-1);
 
   const dueBookings = await Booking.find({
     serviceDate: { $lte: oneMonthAgo }
