@@ -1,43 +1,52 @@
+// server.js
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
-const mongoose = require('mongoose');
 const path = require('path');
 const cron = require('node-cron');
-const bookingRoutes = require('./routes/booking');
-const adminRoutes = require('./routes/admin')
-const Booking = require('./models/Booking');
-const Offer = require('./models/Offer')
-const sendReminder = require('./utils/sendReminder');
+const mongoose = require('mongoose');
 const cors = require('cors');
-require('./watsapp'); 
+
+const bookingRoutes = require('./routes/booking');
+const adminRoutes = require('./routes/admin');
+const Booking = require('./models/Booking');
+const Offer = require('./models/Offer');
+const sendReminder = require('./utils/sendReminder');
+
+// Initialize WhatsApp connection
+require('./watsapp');
+
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error(err));
-  
-  app.use(session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: false
-  }));
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
 
+// Connect to MongoDB once here for all routes
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('✅ MongoDB connected'))
+.catch(err => console.error('❌ MongoDB connection error:', err));
 
+// Routes
 app.use('/', bookingRoutes);
-app.use('/admin',adminRoutes)
+app.use('/admin', adminRoutes);
 
-
+// CRON Job: Runs every minute (adjust to `0 10 * * *` for 10 AM daily)
 cron.schedule('* * * * *', async () => {
   const oneMonthAgo = new Date();
-  oneMonthAgo.setMonth(oneMonthAgo.getMonth()-1 ); 
+  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
 
   const dueBookings = await Booking.find({
     serviceDate: { $lte: oneMonthAgo }
@@ -50,15 +59,14 @@ cron.schedule('* * * * *', async () => {
   }).sort({ from: -1 });
 
   for (const booking of dueBookings) {
-    // Send reminder
-    sendReminder(booking, activeOffer);
-
-    // Update the serviceDate to today's date
+    await sendReminder(booking, activeOffer);
     booking.serviceDate = today;
-    await booking.save(); // save the change
+    await booking.save();
   }
 
-  console.log(`Cron job ran at ${today.toISOString()} - ${dueBookings.length} reminders sent`);
+  console.log(`🕐 Cron ran at ${today.toISOString()} - ${dueBookings.length} reminders sent`);
 });
+
+// Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

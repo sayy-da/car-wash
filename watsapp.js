@@ -1,19 +1,20 @@
-// watsapp.js
 const { Client } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
-const mongoose = require('mongoose');
-const Session = require('./models/session')
 const QRCode = require('qrcode');
+const mongoose = require('mongoose');
+const fs = require('fs');
+const Session = require('./models/session');
 
 let client;
 
 async function startWhatsApp() {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-    console.log('✅ MongoDB connected for WhatsApp session');
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      });
+      console.log('✅ MongoDB connected for WhatsApp session');
+    }
 
     const sessionDoc = await Session.findOne();
 
@@ -25,11 +26,15 @@ async function startWhatsApp() {
       }
     });
 
-   client.on('qr', async qr => {
-  console.log('📱 Scan this QR code with your WhatsApp:');
-  const smallQR = await QRCode.toString(qr, { type: 'terminal', small: true });
-  console.log(smallQR);
-});
+    client.on('qr', async qr => {
+      console.log('📱 Generating QR code PNG...');
+      const outputPath = './whatsapp-qr.png';
+      await QRCode.toFile(outputPath, qr, {
+        width: 300, // Adjust size here
+      });
+      console.log(`🖼️ QR code saved to ${outputPath}`);
+    });
+
     client.on('authenticated', async (session) => {
       await Session.findOneAndUpdate({}, { session }, { upsert: true });
       console.log('🔐 Session saved to MongoDB');
